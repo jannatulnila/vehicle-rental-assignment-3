@@ -1,60 +1,48 @@
-# vehicle-rental-assignment-3
+# Vehicle Rental Assignment-3
 
-Overview
-This project is a Vehicle Rental System database designed to manage Users, Vehicles, and Bookings.
-The database handles real-world scenarios like managing vehicle availability, tracking bookings, and calculating booking statuses. It also demonstrates relational database concepts like primary keys, foreign keys, and relationships between tables.
+## Project Overview
+This project is a **Vehicle Rental System** that manages customers, vehicles, and bookings.  
+It demonstrates the use of **SQL queries** including JOINs, EXISTS, WHERE, GROUP BY, and HAVING.
 
-Database Structure
-Tables
-Users
+### Tables
+1. **users** – stores customer and admin details
+   - Columns: `user_id`, `name`, `email`, `phone`, `role`
 
-id: Primary Key, unique identifier for each user
-name: User’s full name
-email: Unique email address
-password: Account password
-phone: Contact number
-role: Either admin or customer
-Vehicles
+2. **vehicles** – stores vehicle details
+   - Columns: `vehicle_id`, `name`, `type`, `model`, `registration_number`, `rental_price`, `status`
 
-id: Primary Key, unique identifier for each vehicle
-vehicle_name: Name of the vehicle
-vehicle_type: car, bike, or truck
-model: Model year
-registration_number: Unique registration
-rental_price_per_day: Rental price in currency
-availability_status: available, rented, or maintenance
-Bookings
+3. **bookings** – stores booking information
+   - Columns: `booking_id`, `user_id`, `vehicle_id`, `start_date`, `end_date`, `status`, `total_cost`
 
-id: Primary Key, unique booking ID
-user_id: Foreign Key → Users.id
-vehicle_id: Foreign Key → Vehicles.id
-start_date: Booking start date
-end_date: Booking end date
-booking_status: pending, confirmed, completed, cancelled
-total_cost: Total cost of booking
-Relationships
-One-to-Many: Users → Bookings (a user can have multiple bookings)
-Many-to-One: Bookings → Vehicles (each booking is for one vehicle)
-One-to-One (Logical): Each booking connects exactly one user and one vehicle
-Queries Explanation
-Query 1: JOIN
+---
 
-Retrieves booking information along with the customer name and vehicle name.
-Demonstrates the use of INNER JOIN to combine data from multiple tables.
-Example output includes booking ID, customer name, vehicle name, start date, end date, and status.
-Query 2: EXISTS
+## Queries Explanation
 
-Finds vehicles that have never been booked.
-Uses NOT EXISTS to check for vehicles without corresponding bookings.
-Query 3: WHERE
+### Query 1: JOIN
+Retrieve booking information along with **customer name** and **vehicle name**.  
+- **Concept Used:** `INNER JOIN`  
+- **Expected Output:** booking_id, customer_name, vehicle_name, start_date, end_date, status
 
-Retrieves all available vehicles of a specific type (e.g., car).
-Uses WHERE conditions to filter by availability_status and vehicle_type.
-Query 4: GROUP BY and HAVING
+---
 
-Finds the total number of bookings for each vehicle and displays only those vehicles with more than 2 bookings.
-Demonstrates GROUP BY to aggregate data and HAVING to filter aggregated results.
-Notes
-Primary keys ensure uniqueness of records.
-Foreign keys maintain relational integrity between tables.
-Status fields help track the current state of bookings and vehicle availability.
+### Query 2: NOT EXISTS
+Find all vehicles that have **never been booked**.  
+- **Concept Used:** `NOT EXISTS`  
+- **Expected Output:** vehicle_id, name, type, model, registration_number, rental_price, status
+
+---
+
+### Query 3: WHERE
+Retrieve all **available vehicles** of a specific type (e.g., cars).  
+- **Concept Used:** `SELECT`, `WHERE`  
+- **Expected Output:** vehicle_id, name, type, model, registration_number, rental_price, status
+
+---
+
+### Query 4: GROUP BY & HAVING
+Find the **total number of bookings** for each vehicle and display only those vehicles that have **more than 2 bookings**.  
+- **Concept Used:** `GROUP BY`, `HAVING`, `COUNT`  
+- **Expected Output:** vehicle_name, total_bookings
+
+
+
