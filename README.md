@@ -29,6 +29,6 @@ Find total bookings for each vehicle and display only vehicles with more than 2 
 - Helps identify most booked vehicles
 
 ## Submission Links
-- GitHub Repo:
-- ERD Link: [Your ERD Link]
-- Viva Video Link: [Your Viva Video Link]
+- GitHub Repo: https://github.com/jannatulnila/vehicle-rental-assignment-3
+- ERD Link: https://drawsql.app/teams/jannatul-fardous/diagrams/vehicle-rental-system
+- Viva Video Link:
